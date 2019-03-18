@@ -22,16 +22,28 @@ class Register extends Component {
     this.setState({
       loading: true
     });
-    const { email, password, passwordConfirmation } = event.target.elements;
+    const { nickName, email, password, passwordConfirmation } = event.target.elements;
 
     if(password.value === passwordConfirmation.value){
       
       firebase.auth().createUserWithEmailAndPassword(email.value, password.value).then( createUser => {
+        createUser.user.updateProfile({
+          displayName: nickName.value
+        }).then( ()=> {
+          this.saveUser(createUser).then( ()=> {
+            this.setState({
+              error: '',
+              loading: false
+            });
+          })
+        }).catch( error => {
+          this.setState({
+            error: '',
+            loading: false
+          });
+        })
         
-        this.setState({
-          error: '',
-          loading: false
-        });
+
 
       }).catch( error => {
         console.error(error)
@@ -70,6 +82,13 @@ class Register extends Component {
 
     }
   };
+
+  // Salva o nome do usario no dataBase
+  saveUser = createUser => {
+    return firebase.database().ref('users').child(createUser.user.uid).set({
+      name: createUser.user.displayName
+    });
+  }
 
   render() {
     return (
