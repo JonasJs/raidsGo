@@ -17,7 +17,7 @@ import { createStore } from 'redux';
 import { Provider, connect } from 'react-redux'; 
 import { composeWithDevTools } from 'redux-devtools-extension';
 import rootReducer from './reducers';
-import { setUser } from './actions';
+import { setUser, clearUser } from './actions';
 
 const store = createStore( rootReducer, composeWithDevTools());
 
@@ -30,13 +30,16 @@ class Root extends Component{
                 this.props.setUser(user);
                 this.props.history.push('/');
                 console.log(user)
+            } else {
+                this.props.history.push('/login');
+                this.props.clearUser();
             }
         });
     }
 
 
     render() {
-        return (
+        return this.props.isLoading ? <h1>Loading...</h1> : (
             
             <Switch>
                 <Route exact path="/" component={App} />
@@ -47,7 +50,15 @@ class Root extends Component{
     }
 }
 
-const RootWithAuth = withRouter(connect(null, { setUser})(Root));
+const mapStateFromProps = state => ({
+    isLoading: state.user.isLoading
+});
+
+const RootWithAuth = withRouter(connect(
+    mapStateFromProps,
+    { setUser, clearUser }
+
+)(Root));
 
 ReactDOM.render(
     <Provider store={store}>
