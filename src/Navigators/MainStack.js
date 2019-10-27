@@ -1,13 +1,15 @@
 import {createAppContainer} from 'react-navigation';
 import {createStackNavigator} from 'react-navigation-stack';
 
+import StarterStack from './StarterStack';
+
 //Screens
-import Preload from '../Screens/Preload';
+import Preload from '../screens/Preload';
 
 const MainStack = createStackNavigator(
   {
     Preload,
-    //Login
+    StarterStack,
     //Home
   },
   {

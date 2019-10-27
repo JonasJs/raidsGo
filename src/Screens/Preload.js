@@ -1,12 +1,14 @@
-import React from 'react';
-import {View, Text} from 'react-native';
+import {StackActions, NavigationActions} from 'react-navigation';
 
-const Preload = () => {
-  return (
-    <View>
-      <Text>Carregando...</Text>
-    </View>
+const Preload = ({navigation}) => {
+  navigation.dispatch(
+    StackActions.reset({
+      index: 0,
+      actions: [NavigationActions.navigate({routeName: 'StarterStack'})],
+    }),
   );
+
+  return null;
 };
 
 export default Preload;
