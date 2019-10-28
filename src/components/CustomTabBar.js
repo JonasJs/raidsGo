@@ -2,19 +2,40 @@ import React from 'react';
 import styled from 'styled-components/native';
 
 const TabBarArea = styled.SafeAreaView`
-  margin-bottom: 16px;
+  height: 65px;
+  flex-direction: row;
+  background: #5d39db;
+  align-items: center;
 `;
-const TabBarItem = styled.View``;
-const Text = styled.Text`
-  color: red;
+const TabBarItem = styled.TouchableHighlight`
+  flex: 1;
+  height: 65px;
+  justify-content: center;
+  align-items: center;
 `;
 
-const CustomTabBar = ({Items}) => {
+const Text = styled.Text`
+  color: #fff;
+`;
+
+const CustomTabBar = ({
+  items,
+  activeTintColor,
+  inactiveTintColor,
+  navigation,
+}) => {
   return (
     <TabBarArea>
-      {Items.map(item => (
-        <TabBarItem key={item.route}>
-          <Text>{item.Title}</Text>
+      {items.map(item => (
+        <TabBarItem
+          key={item.route}
+          onPress={() => navigation.navigate(item.route)}
+          style={{
+            backgroundColor: activeTintColor
+              ? inactiveTintColor
+              : activeTintColor,
+          }}>
+          <Text>{item.title} </Text>
         </TabBarItem>
       ))}
     </TabBarArea>

@@ -3,20 +3,36 @@ import {createBottomTabNavigator} from 'react-navigation-tabs';
 
 //Screens
 import HomeStack from './HomeStack';
+import Groups from '../Screens/Groups';
+import Profile from '../Screens/Profile';
+import Search from '../Screens/Search';
+import Home from '../Screens/Home';
 
 //Component
-import CustomTabBar from '../components/ButtonCustom';
+import CustomTabBar from '../components/CustomTabBar';
 
 export default createBottomTabNavigator(
   {
     HomeStack,
+    Home,
+    Groups,
+    Profile,
+    Search,
   },
   {
     tabBarComponent: props => (
       <CustomTabBar
         {...props}
-        items={[{Title: 'Home', icon: '...', route: 'HomeStack'}]}
+        items={[
+          {title: 'Perfil', icon: '...', route: 'Profile'},
+          {title: 'Home', icon: '...', route: 'Home'},
+          {title: 'Pesquisar', icon: '...', route: 'Search'},
+        ]}
       />
     ),
+    tabBarOptions: {
+      activeTintColor: '#4F4F4F',
+      inactiveTintColor: '#ddd',
+    },
   },
 );
