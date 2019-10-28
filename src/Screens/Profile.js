@@ -23,7 +23,7 @@ const Title = styled.Text`
 const Profile = () => {
   return (
     <Container>
-      <Title>Profile</Title>
+      <Title>Perfil</Title>
     </Container>
   );
 };
