@@ -24,27 +24,26 @@ const InputContainer = styled.View`
   margin-bottom: 40px;
 `;
 
-const Login = ({navigation}) => {
+const SignUp = () => {
   return (
     <Container>
-      <Title>Login</Title>
+      <Title>Inscrever-se</Title>
       <InputContainer>
+        <Input Label="Nick Name:" />
         <Input Label="Email:" />
         <Input Label="Senha:" Type="Password" />
+        <Input Label="Confirmar senha:" Type="Password" />
       </InputContainer>
-      <ButtonCustom
-        Title="Entrar"
-        onPress={() => navigation.navigate('AppTab')}
-      />
+      <ButtonCustom Title="Entrar" />
     </Container>
   );
 };
 
-Login.navigationOptions = {
+SignUp.navigationOptions = {
   headerStyle: {
     elevation: 0,
     shadowOpacity: 0,
   },
 };
 
-export default Login;
+export default SignUp;

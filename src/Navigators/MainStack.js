@@ -2,6 +2,7 @@ import {createAppContainer} from 'react-navigation';
 import {createStackNavigator} from 'react-navigation-stack';
 
 import StarterStack from './StarterStack';
+import AppTab from './AppTab';
 
 //Screens
 import Preload from '../screens/Preload';
@@ -10,7 +11,7 @@ const MainStack = createStackNavigator(
   {
     Preload,
     StarterStack,
-    //Home
+    AppTab,
   },
   {
     initialRouteName: 'Preload',

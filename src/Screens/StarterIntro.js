@@ -32,7 +32,10 @@ const StarterIntro = ({navigation}) => {
         {'\n'}
         conectar pessoas
       </Text>
-      <ButtonCustom Title="Cadastre-se" />
+      <ButtonCustom
+        Title="Cadastre-se"
+        onPress={() => navigation.navigate('SignUp')}
+      />
       <ButtonCustom
         Title="Entrar"
         Theme="void"
