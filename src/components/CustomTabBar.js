@@ -5,7 +5,9 @@ const TabBarArea = styled.SafeAreaView`
   margin-bottom: 16px;
 `;
 const TabBarItem = styled.View``;
-const Text = styled.Text``;
+const Text = styled.Text`
+  color: red;
+`;
 
 const CustomTabBar = ({Items}) => {
   return (

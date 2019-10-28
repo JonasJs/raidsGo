@@ -12,11 +12,11 @@ export default createBottomTabNavigator(
     HomeStack,
   },
   {
-    tabBarComponent: props => {
+    tabBarComponent: props => (
       <CustomTabBar
         {...props}
         items={[{Title: 'Home', icon: '...', route: 'HomeStack'}]}
-      />;
-    },
+      />
+    ),
   },
 );

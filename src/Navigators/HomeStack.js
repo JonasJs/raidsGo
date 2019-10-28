@@ -1,9 +1,9 @@
 import {createStackNavigator} from 'react-navigation-stack';
 
 //Screens
-import Groups from '../screens/Groups';
-import Profile from '../screens/Profile';
-import Search from '../screens/Search';
+import Groups from '../Screens/Groups';
+import Profile from '../Screens/Profile';
+import Search from '../Screens/Search';
 
 export default createStackNavigator({
   Groups,

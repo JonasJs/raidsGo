@@ -5,7 +5,7 @@ import StarterStack from './StarterStack';
 import AppTab from './AppTab';
 
 //Screens
-import Preload from '../screens/Preload';
+import Preload from '../Screens/Preload';
 
 const MainStack = createStackNavigator(
   {
