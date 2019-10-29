@@ -3,20 +3,16 @@ import {createBottomTabNavigator} from 'react-navigation-tabs';
 
 //Screens
 import HomeStack from './HomeStack';
-import Groups from '../Screens/Groups';
 import Profile from '../Screens/Profile';
 import Search from '../Screens/Search';
-import Home from '../Screens/Home';
 
 //Component
 import CustomTabBar from '../components/CustomTabBar';
 
 export default createBottomTabNavigator(
   {
-    Home,
     HomeStack,
     Profile,
-    Groups,
     Search,
   },
   {

@@ -7,6 +7,7 @@ const Container = styled.View`
   justify-content: center;
   align-items: center;
   border: 1px solid #e5e7f2;
+  margin-bottom: 16px;
 `;
 
 const Text = styled.Text`
