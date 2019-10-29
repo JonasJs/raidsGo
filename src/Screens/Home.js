@@ -2,7 +2,7 @@ import React from 'react';
 
 // Components
 import ButtonCustom from '../components/ButtonCustom';
-import Input from '../components/Input';
+import Header from '../components/Header';
 
 import styled from 'styled-components/native';
 
@@ -12,19 +12,31 @@ const Container = styled.SafeAreaView`
   padding: 0 10%;
   background-color: #ffffff;
 `;
-const Title = styled.Text`
-  font-size: 24px;
-  color: #394064;
+const Text = styled.Text`
+  font-size: 18px;
+  color: #9294a5;
   text-transform: uppercase;
   font-family: 'Lato-Bold';
   text-align: center;
+  margin: 40px 0;
+`;
+const Image = styled.Image`
+  margin: 0 auto;
 `;
 
-const Home = () => {
+const Home = ({navigation}) => {
   return (
-    <Container>
-      <Title>Home</Title>
-    </Container>
+    <>
+      <Header Title="Home"></Header>
+      <Container>
+        <Image source={require('../assets/images/mimikyu.png')} />
+        <Text>Você não tem nem um grupo</Text>
+        <ButtonCustom
+          Title="Procurar grupo"
+          onPress={() => navigation.navigate('Groups')}
+        />
+      </Container>
+    </>
   );
 };
 

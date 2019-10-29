@@ -13,9 +13,9 @@ import CustomTabBar from '../components/CustomTabBar';
 
 export default createBottomTabNavigator(
   {
-    Profile,
-    HomeStack,
     Home,
+    HomeStack,
+    Profile,
     Groups,
     Search,
   },

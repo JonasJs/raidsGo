@@ -4,6 +4,7 @@ import styled from 'styled-components/native';
 
 // Components
 import Input from '../components/Input';
+import Header from '../components/Header';
 
 const Container = styled.SafeAreaView`
   flex: 1;
@@ -28,25 +29,28 @@ const NickName = styled.Text`
 
 const Profile = () => {
   return (
-    <Container>
-      <ContainerImage>
-        <SvgUri
-          width="100%"
-          height="100%"
-          uri="https://avatars.dicebear.com/v2/bottts/Jonas.svg"
-        />
-      </ContainerImage>
-      <NickName>JonasAlves</NickName>
-      <Input
-        Label="Email:"
-        Value="JoonasBalves@gmail.com"
-        Editable={false}></Input>
-      <Input
-        Label="Senha:"
-        Value="JoonasBalves@gmail.com"
-        Type="Password"
-        Editable={false}></Input>
-    </Container>
+    <>
+      <Header Title="Perfil"></Header>
+      <Container>
+        <ContainerImage>
+          <SvgUri
+            width="100%"
+            height="100%"
+            uri="https://avatars.dicebear.com/v2/bottts/Jonas.svg"
+          />
+        </ContainerImage>
+        <NickName>JonasAlves</NickName>
+        <Input
+          Label="Email:"
+          Value="JoonasBalves@gmail.com"
+          Editable={false}></Input>
+        <Input
+          Label="Senha:"
+          Value="JoonasBalves@gmail.com"
+          Type="Password"
+          Editable={false}></Input>
+      </Container>
+    </>
   );
 };
 
