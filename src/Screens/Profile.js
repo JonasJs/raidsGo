@@ -1,10 +1,9 @@
 import React from 'react';
+import {SvgUri} from 'react-native-svg';
+import styled from 'styled-components/native';
 
 // Components
-import ButtonCustom from '../components/ButtonCustom';
 import Input from '../components/Input';
-
-import styled from 'styled-components/native';
 
 const Container = styled.SafeAreaView`
   flex: 1;
@@ -12,18 +11,41 @@ const Container = styled.SafeAreaView`
   padding: 0 10%;
   background-color: #ffffff;
 `;
-const Title = styled.Text`
-  font-size: 24px;
+
+const ContainerImage = styled.View`
+  width: 160px;
+  height: 160px;
+  margin: 0 auto;
+`;
+
+const NickName = styled.Text`
+  font-size: 18px;
   color: #394064;
-  text-transform: uppercase;
   font-family: 'Lato-Bold';
   text-align: center;
+  margin: 16px 0 40px 0;
 `;
 
 const Profile = () => {
   return (
     <Container>
-      <Title>Perfil</Title>
+      <ContainerImage>
+        <SvgUri
+          width="100%"
+          height="100%"
+          uri="https://avatars.dicebear.com/v2/bottts/Jonas.svg"
+        />
+      </ContainerImage>
+      <NickName>JonasAlves</NickName>
+      <Input
+        Label="Email:"
+        Value="JoonasBalves@gmail.com"
+        Editable={false}></Input>
+      <Input
+        Label="Senha:"
+        Value="JoonasBalves@gmail.com"
+        Type="Password"
+        Editable={false}></Input>
     </Container>
   );
 };

@@ -18,12 +18,14 @@ const Text = styled.Text`
   color: #394064;
 `;
 
-const Input = ({Label, Type, onChangeText}) => (
+const Input = ({Label, Type, Value, Editable, onChangeText}) => (
   <Content>
     <Text>{Label}</Text>
     <TextInput
       secureTextEntry={Type === 'Password' ? true : false}
       onChangeText={onChangeText}
+      value={Value}
+      editable={Editable}
     />
   </Content>
 );
