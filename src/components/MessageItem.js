@@ -13,6 +13,7 @@ const ContainerImage = styled.View`
   width: 50px;
   height: 50px;
 `;
+
 const Content = styled.View`
   margin-left: 8px;
 `;
