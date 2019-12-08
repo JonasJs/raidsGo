@@ -1,5 +1,8 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {SvgUri} from 'react-native-svg';
+
+import {useSelector} from 'react-redux';
+
 import styled from 'styled-components/native';
 
 // Components
@@ -28,6 +31,7 @@ const NickName = styled.Text`
 `;
 
 const Profile = () => {
+  const {email, nickName} = useSelector(state => state.auth);
   return (
     <>
       <Header Title="Perfil"></Header>
@@ -39,11 +43,8 @@ const Profile = () => {
             uri="https://avatars.dicebear.com/v2/bottts/Jonas.svg"
           />
         </ContainerImage>
-        <NickName>JonasAlves</NickName>
-        <Input
-          Label="Email:"
-          Value="JoonasBalves@gmail.com"
-          Editable={false}></Input>
+        <NickName>{nickName}</NickName>
+        <Input Label="Email:" Value={email} Editable={false}></Input>
         <Input
           Label="Senha:"
           Value="JoonasBalves@gmail.com"

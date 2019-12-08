@@ -1,4 +1,8 @@
-import React from 'react';
+import React, {useEffect} from 'react';
+import {useSelector, useDispatch} from 'react-redux';
+
+// Actions
+import {SignInAction, setInfos} from '../actions/AuthActions';
 
 // Components
 import ButtonCustom from '../components/ButtonCustom';
@@ -24,6 +28,16 @@ const Text = styled.Text`
 `;
 
 const StarterIntro = ({navigation}) => {
+  const {status} = useSelector(state => state.auth);
+  const Dispatch = useDispatch();
+
+  useEffect(() => {
+    Dispatch(SignInAction('admin@admin.com', '123456'));
+    if (status === 1) {
+      Dispatch(setInfos());
+      navigation.navigate('AppTab');
+    }
+  }, [status]);
   return (
     <Container>
       <Logo source={require('../assets/images/logo.png')} />

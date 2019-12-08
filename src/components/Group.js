@@ -50,7 +50,7 @@ const Line = styled.View`
   margin: 16px 0;
 `;
 
-const Group = ({Title, onPress}) => {
+const Group = ({Title, Pokemon = '??', NumberUser = 0, onPress}) => {
   return (
     <>
       <Container onPress={onPress}>
@@ -64,11 +64,11 @@ const Group = ({Title, onPress}) => {
             </IconContainer>
             <IconContainer>
               <Icon source={require('../assets/images/iconPokemon.png')} />
-              <IconText>Giratina</IconText>
+              <IconText>{Pokemon}</IconText>
             </IconContainer>
             <IconContainer>
               <Icon source={require('../assets/images/numberUsers.png')} />
-              <IconText>22</IconText>
+              <IconText>{NumberUser}</IconText>
             </IconContainer>
           </IconContent>
         </Content>

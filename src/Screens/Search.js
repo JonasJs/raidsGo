@@ -1,15 +1,15 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
+import {useSelector, useDispatch} from 'react-redux';
+import styled from 'styled-components/native';
 
 // Components
-import ButtonCustom from '../components/ButtonCustom';
-import Input from '../components/Input';
+import Group from '../components/Group';
 
-import styled from 'styled-components/native';
+//Images
+import IconSearch from '../components/Icons/IconSearch';
 
 const Container = styled.SafeAreaView`
   flex: 1;
-  justify-content: center;
-  padding: 0 10%;
   background-color: #ffffff;
 `;
 const Title = styled.Text`
@@ -20,10 +20,73 @@ const Title = styled.Text`
   text-align: center;
 `;
 
+const Send = styled.View`
+  width: 100%;
+  height: 70px;
+  flex-direction: row;
+  align-items: center;
+  background: #fff;
+`;
+const Input = styled.TextInput`
+  flex: 1;
+  height: 70px;
+  padding-left: 10%;
+`;
+const Icon = styled.TouchableOpacity`
+  padding-right: 10%;
+`;
+
+const Text = styled.Text``;
+
 const Search = () => {
+  const {groups} = useSelector(state => state.group);
+  const [groupsName, setGroupsName] = useState('');
+  const [filter, setFilter] = useState([]);
+
+  const SearchGroup = () => {
+    const group = groups.filter(({title}) =>
+      title.toUpperCase().includes(groupsName.toUpperCase()),
+    );
+    alert(JSON.stringify(group));
+    setFilter(group);
+  };
+
+  useEffect(() => {
+    setFilter(groups);
+  }, [groups]);
+
   return (
     <Container>
-      <Title>Search</Title>
+      <Send
+        style={{
+          shadowColor: '#000',
+          shadowOffset: {
+            width: 0,
+            height: 10,
+          },
+          shadowOpacity: 0.58,
+          shadowRadius: 16.0,
+          elevation: 24,
+        }}>
+        <Input
+          placeholder="Digite o nome do grupo"
+          onChangeText={text => setGroupsName(text)}
+          value={groupsName}></Input>
+        <Icon onPress={() => SearchGroup()}>
+          <IconSearch></IconSearch>
+        </Icon>
+      </Send>
+      {filter.length > 0 ? (
+        filter.map(({key, title, pokemon, numberUser}) => (
+          <Group
+            key={key}
+            Title={title}
+            Pokemon={pokemon}
+            NumberUser={numberUser}></Group>
+        ))
+      ) : (
+        <Text>dssdf</Text>
+      )}
     </Container>
   );
 };

@@ -1,4 +1,8 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
+import {useSelector, useDispatch} from 'react-redux';
+
+// Actions
+import {createNewUser} from '../actions/AuthActions';
 
 // Components
 import ButtonCustom from '../components/ButtonCustom';
@@ -20,20 +24,22 @@ const Title = styled.Text`
   text-align: center;
   margin-bottom: 56px;
 `;
-const InputContainer = styled.View`
-  margin-bottom: 40px;
-`;
+const InputContainer = styled.View``;
 const ErroText = styled.Text`
   color: red;
+  margin-bottom: 40px;
 `;
 
-const SignUp = () => {
+const SignUp = ({navigation}) => {
   const [nickName, setNickName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
 
   const [error, setError] = useState('');
+
+  const {status} = useSelector(state => state.auth);
+  const Dispatch = useDispatch();
 
   const Login = () => {
     if (
@@ -43,14 +49,22 @@ const SignUp = () => {
       confirmPassword !== ''
     ) {
       if (confirmPassword === password) {
-        alert('Entrou');
+        Dispatch(createNewUser(nickName, email, password));
       } else {
         alert('deu erro');
       }
     } else {
-      alert('deu ruim');
+      setError('Por favor preencha todos os campos');
     }
   };
+
+  useEffect(() => {
+    /* componentDidUpdate code */
+    alert(status);
+    if (status === 1) {
+      navigation.navigate('AppTab');
+    }
+  }, [status]);
 
   return (
     <Container>

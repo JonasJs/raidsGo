@@ -1,4 +1,8 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
+import {useSelector, useDispatch} from 'react-redux';
+
+// Actions
+import {listGroups} from '../actions/GroupsActions';
 
 // Components
 import ButtonCustom from '../components/ButtonCustom';
@@ -31,6 +35,22 @@ const Groups = styled.SafeAreaView`
 
 const Home = ({navigation}) => {
   const isGroup = true;
+  const {groups} = useSelector(state => state.group);
+  const Dispatch = useDispatch();
+
+  // const [listGroups, setListGroups] = useState([
+  //   {
+  //     name: 'jonas',
+  //   },
+  //   {
+  //     name: 'jonas2',
+  //   },
+  // ]);
+
+  useEffect(() => {
+    Dispatch(listGroups());
+  }, []);
+
   return (
     <>
       {!isGroup ? (
@@ -44,11 +64,16 @@ const Home = ({navigation}) => {
         </Container>
       ) : (
         <Groups>
-          <Group
+          {groups.map(({key, title, pokemon, numberUser}) => (
+            <Group
+              key={key}
+              Title={title}
+              Pokemon={pokemon}
+              NumberUser={numberUser}></Group>
+          ))}
+          {/* <Group
             Title="Ginasio 1"
-            onPress={() => navigation.navigate('Conversation')}></Group>
-          <Group Title="Ginasio 2"></Group>
-          <Group Title="Ginasio 3"></Group>
+            onPress={() => navigation.navigate('Conversation')}></Group> */}
         </Groups>
       )}
     </>
