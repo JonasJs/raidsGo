@@ -5,6 +5,7 @@ const initialState = {
       key: 240,
     },
   ],
+  myGroups: [],
 };
 
 export default (state = initialState, action) => {
@@ -14,6 +15,9 @@ export default (state = initialState, action) => {
       break;
     case 'SET_GROUPS':
       return {...state, groups: action.payload.groups};
+      break;
+    case 'SET_MY_GROUPS':
+      return {...state, myGroups: action.payload.mygroups};
       break;
   }
 

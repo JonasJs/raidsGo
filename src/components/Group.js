@@ -1,5 +1,6 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 import styled from 'styled-components/native';
+import CountDown from 'react-native-countdown-component';
 
 const Container = styled.TouchableOpacity`
   flex-direction: row;
@@ -35,6 +36,7 @@ const IconContainer = styled.View`
 const IconContent = styled.View`
   flex-direction: row;
   margin-top: 8px;
+  margin-right: 6px;
 `;
 
 const IconText = styled.Text`
@@ -50,7 +52,27 @@ const Line = styled.View`
   margin: 16px 0;
 `;
 
-const Group = ({Title, Pokemon = '??', NumberUser = 0, onPress}) => {
+const Group = ({
+  Title,
+  Pokemon = '??',
+  NumberUser = 0,
+  time = 1010,
+  onPress,
+}) => {
+  const [count, setCount] = useState(10);
+
+  useEffect(() => {
+    //Dispatch(listMyGroups(uid));
+    // const myInterval = setInterval(() => {
+    //   if (count > 0) {
+    //     setCount(count - 1);
+    //   }
+    //   if (count === 0) {
+    //     clearInterval(myInterval);
+    //   }
+    // }, 2000);
+  }, [count]);
+
   return (
     <>
       <Container onPress={onPress}>
@@ -60,7 +82,25 @@ const Group = ({Title, Pokemon = '??', NumberUser = 0, onPress}) => {
           <IconContent>
             <IconContainer>
               <Icon source={require('../assets/images/iconClock.png')} />
-              <IconText>40:02</IconText>
+              <CountDown
+                until={time}
+                onFinish={() => alert('finished')}
+                onPress={() => alert('hello')}
+                digitStyle={{
+                  backgroundColor: '#FFF',
+                  height: 10,
+                }}
+                digitTxtStyle={{
+                  color: '#9294a5',
+                  fontSize: 12,
+                  fontFamily: 'Lato-Bold',
+                  marginLeft: 0,
+                }}
+                timeToShow={['M', 'S']}
+                timeLabels={{m: null, s: null}}
+                showSeparator
+                size={7}
+              />
             </IconContainer>
             <IconContainer>
               <Icon source={require('../assets/images/iconPokemon.png')} />

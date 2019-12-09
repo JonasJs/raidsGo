@@ -2,7 +2,7 @@ import React, {useState, useEffect} from 'react';
 import {useSelector, useDispatch} from 'react-redux';
 
 // Actions
-import {listGroups} from '../actions/GroupsActions';
+import {listGroups, listMyGroups} from '../actions/GroupsActions';
 
 // Components
 import ButtonCustom from '../components/ButtonCustom';
@@ -35,7 +35,8 @@ const Groups = styled.SafeAreaView`
 
 const Home = ({navigation}) => {
   const isGroup = true;
-  const {groups} = useSelector(state => state.group);
+  const {myGroups} = useSelector(state => state.group);
+  const {uid} = useSelector(state => state.auth);
   const Dispatch = useDispatch();
 
   // const [listGroups, setListGroups] = useState([
@@ -48,7 +49,7 @@ const Home = ({navigation}) => {
   // ]);
 
   useEffect(() => {
-    Dispatch(listGroups());
+    Dispatch(listMyGroups(uid));
   }, []);
 
   return (
@@ -64,12 +65,13 @@ const Home = ({navigation}) => {
         </Container>
       ) : (
         <Groups>
-          {groups.map(({key, title, pokemon, numberUser}) => (
+          {myGroups.map(({key, title, pokemon, numberUser}) => (
             <Group
               key={key}
               Title={title}
               Pokemon={pokemon}
-              NumberUser={numberUser}></Group>
+              NumberUser={numberUser}
+              time={Math.ceil(Math.random() * 9000)}></Group>
           ))}
           {/* <Group
             Title="Ginasio 1"

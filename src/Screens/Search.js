@@ -4,6 +4,7 @@ import styled from 'styled-components/native';
 
 // Components
 import Group from '../components/Group';
+import ButtonCustom from '../components/ButtonCustom';
 
 //Images
 import IconSearch from '../components/Icons/IconSearch';
@@ -36,7 +37,15 @@ const Icon = styled.TouchableOpacity`
   padding-right: 10%;
 `;
 
+const Image = styled.Image`
+  margin: 0 auto;
+`;
+
 const Text = styled.Text``;
+
+const View = styled.View`
+  margin: 0 10%;
+`;
 
 const Search = () => {
   const {groups} = useSelector(state => state.group);
@@ -85,7 +94,15 @@ const Search = () => {
             NumberUser={numberUser}></Group>
         ))
       ) : (
-        <Text>dssdf</Text>
+        <View>
+          <Image source={require('../assets/images/mimikyu.png')} />
+          <Text>Você não tem nem um grupo</Text>
+          <ButtonCustom
+            Title="Procurar grupo"
+            onPress={() => navigation.navigate('Search')}
+          />
+          <ButtonCustom Title="Entrar" onPress={() => console.log('d')} />
+        </View>
       )}
     </Container>
   );
